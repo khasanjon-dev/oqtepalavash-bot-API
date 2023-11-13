@@ -3,3 +3,5 @@ del:
 	find . -path "*/migrations/*.pyc" -delete
 make:
 	python3 manage.py makemigrations
+mig:
+	python3 manage.py migrate
