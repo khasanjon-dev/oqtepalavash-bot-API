@@ -10,6 +10,9 @@ python = "^3.10"
 django = "^4.2.7"
 isort = "^5.12.0"
 
+[tool.isort]
+skip = "migrations, __init__.py"
+
 
 [build-system]
 requires = ["poetry-core"]
