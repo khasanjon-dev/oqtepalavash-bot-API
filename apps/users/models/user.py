@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, IntegerField, DateTimeField
+from django.db.models import CharField, DateTimeField, IntegerField, Model
 
 
 class User(Model):
