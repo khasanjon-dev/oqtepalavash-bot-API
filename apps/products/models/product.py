@@ -1,5 +1,5 @@
-from django.db.models import Model, CharField, TextField, IntegerField, ImageField, ForeignKey, CASCADE
-
+from django.db.models import (CASCADE, CharField, ForeignKey, ImageField,
+                              IntegerField, Model, TextField)
 from products.models import Category
 
 
