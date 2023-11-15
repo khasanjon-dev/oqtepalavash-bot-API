@@ -12,6 +12,7 @@ isort = "^5.12.0"
 python-dotenv = "^1.0.0"
 django-jazzmin = "^2.6.0"
 djangorestframework = "^3.14.0"
+drf-yasg = "^1.21.7"
 
 [tool.isort]
 skip = "migrations, __init__.py"
