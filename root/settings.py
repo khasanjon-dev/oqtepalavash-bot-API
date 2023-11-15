@@ -1,10 +1,11 @@
 import os.path
 from pathlib import Path
-
+import sys
 from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.append(os.path.join(BASE_DIR, 'apps'))
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
