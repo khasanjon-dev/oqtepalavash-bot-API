@@ -1,4 +1,4 @@
-from django.db.models import Model, TextField, CharField
+from django.db.models import CharField, Model, TextField
 
 
 class About(Model):
