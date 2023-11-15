@@ -1,8 +1,8 @@
 import os.path
-from pathlib import Path
 import sys
-from dotenv import load_dotenv
+from pathlib import Path
 
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
