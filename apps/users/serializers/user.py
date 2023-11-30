@@ -17,5 +17,5 @@ class RegisterSerializer(Serializer):
     def validate(self, attrs):
         telegram_id = attrs.get('telegram_id')
         if User.objects.filter(telegram_id=telegram_id).exists():
-            raise ValidationError('Bunday user mavjud')
+            raise ValidationError('Bunday user mavjud!')
         return attrs

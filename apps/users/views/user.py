@@ -10,11 +10,14 @@ class UserViewSet(GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 
-    @action(methods=['post'], detail=False, serializer_class=RegisterSerializer)
+    @action(methods=['post'], detail=False, serializer_class=RegisterSerializer, url_path='user')
     def get_or_create_user(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         telegram_id = serializer.data.get('telegram_id')
         user, created = User.objects.get_or_create(telegram_id=telegram_id)
         serializer = UserModelSerializer(data=user)
+        serializer.data['created'] = False
+        if created:
+            serializer.data['created'] = True
         return Response(serializer.data)
