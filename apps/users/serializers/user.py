@@ -5,7 +5,6 @@ from users.models import User
 
 
 class UserModelSerializer(ModelSerializer):
-    is_created =
     class Meta:
         model = User
         fields = ('telegram_id', 'phone', 'city', 'language')
