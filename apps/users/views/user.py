@@ -16,8 +16,6 @@ class UserViewSet(GenericViewSet):
         serializer.is_valid(raise_exception=True)
         telegram_id = serializer.data.get('telegram_id')
         user, created = User.objects.get_or_create(telegram_id=telegram_id)
-        serializer = UserModelSerializer(data=user)
+        serializer = UserModelSerializer(user)
         serializer.data['created'] = False
-        if created:
-            serializer.data['created'] = True
         return Response(serializer.data)
