@@ -17,5 +17,4 @@ class UserViewSet(GenericViewSet):
         telegram_id = serializer.data.get('telegram_id')
         user, created = User.objects.get_or_create(telegram_id=telegram_id)
         serializer = UserModelSerializer(user)
-        serializer.data['created'] = False
         return Response(serializer.data)
