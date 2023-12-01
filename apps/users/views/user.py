@@ -19,8 +19,7 @@ class UserViewSet(GenericViewSet):
         telegram_id = serializer.data.get('telegram_id')
         if User.objects.filter(telegram_id=telegram_id).exists():
             serializer.data.pop('telegram_id')
-            user = User.objects.update(**serializer.data)
-            serializer = UserModelSerializer(user)
+            User.objects.filter(telegram_id=telegram_id).update(**serializer.data)
             return Response(serializer.data)
         User.objects.create(**serializer.data)
         return Response(serializer.data, status.HTTP_201_CREATED)
