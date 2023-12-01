@@ -3,18 +3,26 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from users.models import User
-from users.serializers.user import UserModelSerializer, RegisterSerializer
+from users.serializers.user import UserModelSerializer
 
 
 class UserViewSet(GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 
-    @action(methods=['post'], detail=False, serializer_class=RegisterSerializer, url_path='user')
+    @action(methods=['post'], detail=False, url_path='user')
     def get_or_create_user(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         telegram_id = serializer.data.get('telegram_id')
+        phone = serializer.data['phone']
+        city = serializer.data['city']
+        language = serializer.data['language']
         user, created = User.objects.get_or_create(telegram_id=telegram_id)
-        serializer = UserModelSerializer(user)
+        user.phone = phone
+        user.city = city
+        user.language = language
+        user.save()
         return Response(serializer.data)
+
+    # @action(methods=['get'], detail=False, serializer_class=)

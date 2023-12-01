@@ -12,3 +12,4 @@ class UserModelSerializer(ModelSerializer):
 
 class RegisterSerializer(Serializer):
     telegram_id = serializers.IntegerField()
+
