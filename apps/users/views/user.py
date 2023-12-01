@@ -23,4 +23,4 @@ class UserViewSet(GenericViewSet):
             return Response(serializer.data)
         User.objects.create(**serializer.data)
         return Response(serializer.data, status.HTTP_201_CREATED)
-    # @action(methods=['get'], detail=False, serializer_class=)
+    # @action(methods=['post'], detail=False, serializer_class=UserSerializer)
