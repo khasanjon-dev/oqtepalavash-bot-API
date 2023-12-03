@@ -18,7 +18,6 @@ class UserViewSet(GenericViewSet):
         serializer.is_valid(raise_exception=True)
         telegram_id = serializer.data.get('telegram_id')
         if User.objects.filter(telegram_id=telegram_id).exists():
-            serializer.data.pop('telegram_id')
             User.objects.filter(telegram_id=telegram_id).update(**serializer.data)
             return Response(serializer.data)
         User.objects.create(**serializer.data)
